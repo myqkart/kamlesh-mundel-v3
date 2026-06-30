@@ -516,4 +516,13 @@ html.lenis, html.lenis body {
   box-shadow: 0 0 12px rgba(0, 255, 170, 0.35);
 }
 
+@keyframes sharePulse {
+  0%, 100% {
+    box-shadow: 0 0 24px rgba(0, 255, 170, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 36px rgba(0, 255, 170, 0.35), 0 0 8px rgba(0, 255, 170, 0.2);
+  }
+}
+
 

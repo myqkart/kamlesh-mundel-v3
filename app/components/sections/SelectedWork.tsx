@@ -181,7 +181,7 @@ export default function SelectedWork() {
   };
 
   return (
-    <div className="relative w-full">
+    <div id="projects" className="relative w-full" aria-label="Selected work and projects">
       {/* ========================================================
           DESKTOP & TABLET GALLERY SHOWCASE (Horizontal Scroll Pinned)
           ======================================================== */}

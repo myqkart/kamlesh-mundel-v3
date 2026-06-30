@@ -93,7 +93,8 @@ export default function Experience() {
   return (
     <section
       ref={containerRef}
-      id="experience"
+      id="journey"
+      aria-label="Professional experience and journey"
       className="relative w-full min-h-[120vh] bg-transparent text-white select-none py-24 px-6 md:px-16 lg:px-24 overflow-hidden"
     >
       {/* Ambient depth — stays behind content, no cursor tracking */}

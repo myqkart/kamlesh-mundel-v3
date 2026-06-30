@@ -14,6 +14,7 @@ import Testimonials from "./components/sections/Testimonials";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 import BackgroundCanvas from "./components/sections/BackgroundCanvas";
+import SharePulse from "./components/ui/SharePulse";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +42,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col w-full bg-black text-white overflow-x-hidden relative">
+    <main id="main-content" className="flex min-h-screen flex-col w-full bg-black text-white overflow-x-hidden relative">
       {/* Shared WebGL Background Canvas */}
       <BackgroundCanvas isLoaded={isLoaded} />
 
@@ -57,6 +58,7 @@ export default function Home() {
       <Testimonials />
       <Contact />
       <Footer />
+      <SharePulse />
     </main>
   );
 }

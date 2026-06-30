@@ -171,7 +171,8 @@ export default function CreativeLab() {
   return (
     <section
       ref={sectionRef}
-      id="creativelab"
+      id="lab"
+      aria-label="Creative lab and experiments"
       className="relative w-full min-h-[130vh] bg-transparent text-white select-none py-20 overflow-hidden"
     >
       {/* Isometric vault floor — unique to lab (not particle network) */}

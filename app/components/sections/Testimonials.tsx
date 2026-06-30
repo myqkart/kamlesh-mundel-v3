@@ -66,7 +66,8 @@ export default function Testimonials() {
   return (
     <section
       ref={containerRef}
-      id="testimonials"
+      id="recognition"
+      aria-label="Client recognition and testimonials"
       className="relative w-full min-h-[100vh] bg-transparent text-white select-none py-24 px-6 md:px-16 lg:px-24 overflow-hidden flex items-center"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-16 relative z-10 w-full">

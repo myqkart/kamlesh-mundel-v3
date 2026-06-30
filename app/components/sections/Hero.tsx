@@ -108,7 +108,7 @@ export default function Hero({ setIsLoaded }: HeroProps) {
   }, [setIsLoaded]);
 
   return (
-    <section className="relative w-full h-[120vh] bg-black select-none z-10 font-sans overflow-hidden">
+    <section id="top" aria-label="Introduction" className="relative w-full h-[120vh] bg-black select-none z-10 font-sans overflow-hidden">
       
       {/* 1. Cinematic Entry Loader Overlays */}
       <div 
