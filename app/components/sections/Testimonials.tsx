@@ -43,7 +43,7 @@ export default function Testimonials() {
   useEffect(() => {
     if (typeof window === "undefined" || window.innerWidth < 768) return;
 
-    cardRefs.current.forEach((el, idx) => {
+    cardRefs.current.forEach((el) => {
       if (!el) return;
       gsap.fromTo(
         el,
@@ -70,8 +70,6 @@ export default function Testimonials() {
       className="relative w-full min-h-[100vh] bg-transparent text-white select-none py-24 px-6 md:px-16 lg:px-24 overflow-hidden flex items-center"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-16 relative z-10 w-full">
-        
-        {/* Section Header */}
         <div className="flex flex-col gap-4 text-center items-center max-w-2xl mx-auto">
           <span className="glass-panel w-fit px-3.5 py-1.5 rounded-full text-[10px] font-mono tracking-widest text-zinc-400 uppercase">
             ✦ Client & Peer Reviews
@@ -84,7 +82,6 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* 3-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {testimonials.map((t, idx) => (
             <div

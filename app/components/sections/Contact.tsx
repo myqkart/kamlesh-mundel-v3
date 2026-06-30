@@ -9,9 +9,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// ─────────────────────────────────────────────
-// DATA TYPES
-// ─────────────────────────────────────────────
 interface Portal {
   label: string;
   hint: string;
@@ -58,9 +55,6 @@ const availabilityFocus = [
   "React & Next.js Performance"
 ];
 
-// ─────────────────────────────────────────────
-// PORTAL COMPONENT
-// ─────────────────────────────────────────────
 function ContactPortal({ portal }: { portal: Portal }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef<HTMLAnchorElement>(null);
@@ -93,9 +87,9 @@ function ContactPortal({ portal }: { portal: Portal }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div 
+      <div
         className="absolute top-0 left-4 right-4 h-px rounded-full transition-opacity duration-300"
-        style={{ background: portal.accent, opacity: hovered ? 0.8 : 0 }} 
+        style={{ background: portal.accent, opacity: hovered ? 0.8 : 0 }}
       />
 
       <div
@@ -124,9 +118,6 @@ function ContactPortal({ portal }: { portal: Portal }) {
   );
 }
 
-// ─────────────────────────────────────────────
-// MAIN SECTION
-// ─────────────────────────────────────────────
 export default function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
   const elementsRef = useRef<HTMLDivElement>(null);
@@ -162,26 +153,21 @@ export default function Contact() {
     >
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div ref={elementsRef} className="flex flex-col gap-16">
-          
-          {/* Header titles */}
           <div className="flex flex-col gap-4 text-center items-center max-w-3xl mx-auto">
             <span className="glass-panel w-fit px-3.5 py-1.5 rounded-full text-[10px] font-mono tracking-widest text-zinc-400 uppercase">
               ✦ Initiate Collaboration
             </span>
-            
+
             <h2 className="font-display font-extrabold text-[2.8rem] lg:text-[4.2rem] leading-none tracking-tighter uppercase text-white">
               Let&apos;s Create Something People Will Remember.
             </h2>
-            
+
             <p className="text-xs lg:text-sm text-zinc-400 leading-relaxed font-light char-limit-desktop char-limit-tablet">
               Whether you are architecting a luxury showcase, optimizing production code libraries, or seeking UI leadership, the conversation starts with a single message.
             </p>
           </div>
 
-          {/* Dual Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Left side: Available Badges & Portals (8 cols) */}
             <div className="lg:col-span-8 flex flex-col gap-8">
               <div className="flex flex-col gap-4">
                 <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase">
@@ -194,7 +180,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Current focus badging */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -204,8 +189,8 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {availabilityFocus.map((f) => (
-                    <span 
-                      key={f} 
+                    <span
+                      key={f}
                       className="glass-panel px-3.5 py-1.5 rounded-full text-[10px] font-mono text-emerald-400 border border-emerald-400/10"
                     >
                       {f}
@@ -215,7 +200,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Right side: Quick actions & Booking (4 cols) */}
             <div className="lg:col-span-4 flex flex-col gap-8 glass-panel p-8 border border-white/5 rounded-2xl">
               <div className="flex flex-col gap-4 text-center lg:text-left">
                 <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase">
@@ -229,15 +213,14 @@ export default function Contact() {
                 </p>
               </div>
 
-              {/* Booking Trigger */}
               <div className="flex flex-col items-center lg:items-start gap-4">
                 <div className="relative w-full flex justify-center lg:justify-start">
-                  <div 
+                  <div
                     className="absolute inset-0 rounded-full animate-ping opacity-15 bg-emerald-400"
-                    style={{ animationDuration: "2.5s" }} 
+                    style={{ animationDuration: "2.5s" }}
                   />
-                  <MagneticButton 
-                    variant="primary" 
+                  <MagneticButton
+                    variant="primary"
                     className="relative z-10 px-8 py-4 text-sm font-bold tracking-wide w-full max-w-[280px]"
                     onClick={() => window.open("mailto:kamlesh.mundel@gmail.com", "_blank")}
                   >
@@ -245,7 +228,6 @@ export default function Contact() {
                   </MagneticButton>
                 </div>
 
-                {/* Secondary actions links */}
                 <div className="flex justify-center lg:justify-start gap-6 mt-2 w-full">
                   {[
                     { label: "View Resume", href: "#" },
@@ -262,7 +244,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

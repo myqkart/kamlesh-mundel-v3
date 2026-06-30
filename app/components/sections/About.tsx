@@ -8,7 +8,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Staggered principles for the sidebar / footer
 const principles = [
   "Performance First",
   "Scalable Architecture",
@@ -68,8 +67,7 @@ export default function About() {
   useEffect(() => {
     if (typeof window === "undefined" || window.innerWidth < 768) return;
 
-    // Fade-in each chapter card on scroll
-    chapterRefs.current.forEach((el, idx) => {
+    chapterRefs.current.forEach((el) => {
       if (!el) return;
       gsap.fromTo(
         el,
@@ -88,7 +86,6 @@ export default function About() {
       );
     });
 
-    // Draw the vertical connector lines on scroll
     lineRefs.current.forEach((line) => {
       if (!line) return;
       gsap.fromTo(
@@ -120,8 +117,6 @@ export default function About() {
       }}
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 relative z-10">
-        
-        {/* Left Column: Sticky Title & Principles (Desktop Only) */}
         <div className="w-full md:w-[40%] md:sticky md:top-28 md:h-fit flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <span className="glass-panel w-fit px-3.5 py-1.5 rounded-full text-[10px] font-mono tracking-widest text-zinc-400 uppercase">
@@ -131,7 +126,7 @@ export default function About() {
               The Philosophy Behind the Code
             </h2>
           </div>
-          
+
           <p className="text-xs lg:text-sm text-zinc-400 leading-relaxed font-light max-w-sm char-limit-tablet">
             I don&apos;t just build websites. I build experiences. By bridging design vision and system engineering, I translate concepts into lightweight, high-performance interfaces.
           </p>
@@ -153,10 +148,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right Column: Chapters Scroll Stream */}
         <div className="w-full md:w-[60%] flex flex-col gap-32 md:pl-20 relative">
-          
-          {/* Aesthetic background timeline bar */}
           <div className="absolute left-0 top-0 bottom-0 w-px bg-white/5 hidden md:block" />
 
           {chapters.map((ch, idx) => (
@@ -165,33 +157,27 @@ export default function About() {
               ref={(el) => { chapterRefs.current[idx] = el; }}
               className="relative md:pl-10 flex flex-col items-start gap-4 transition-all"
             >
-              {/* Timeline marker for desktop */}
-              <div 
+              <div
                 className="absolute left-[-4px] top-1.5 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#00ffaa] hidden md:block"
-                style={{
-                  transition: "all 0.3s ease",
-                }}
               />
 
               <span className="text-[10px] font-mono tracking-widest text-emerald-400 uppercase">
                 {ch.num}
               </span>
-              
+
               <h3 className="font-display font-extrabold text-[1.8rem] lg:text-[2.2rem] leading-tight tracking-tight uppercase text-white char-limit-desktop char-limit-tablet">
                 {ch.title}
               </h3>
-              
+
               <p className="text-xs lg:text-sm text-zinc-400 leading-relaxed font-light char-limit-desktop char-limit-tablet">
                 {ch.text}
               </p>
 
               {idx < chapters.length - 1 && (
-                <div 
+                <div
                   ref={(el) => { lineRefs.current[idx] = el; }}
                   className="absolute left-0 top-6 bottom-0 w-px bg-emerald-400/30 hidden md:block origin-top"
-                  style={{
-                    height: "calc(100% + 3rem)",
-                  }}
+                  style={{ height: "calc(100% + 3rem)" }}
                 />
               )}
             </div>
@@ -199,7 +185,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Principles for Mobile (shown below the scroll chapters) */}
       <div className="flex lg:hidden flex-col gap-3 mt-16 pt-10 border-t border-white/5">
         <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase">
           ✦ Governing Principles

@@ -54,8 +54,7 @@ export default function CaseStudies() {
   useEffect(() => {
     if (typeof window === "undefined" || window.innerWidth < 768) return;
 
-    // Reveal cards on scroll
-    cardRefs.current.forEach((el, idx) => {
+    cardRefs.current.forEach((el) => {
       if (!el) return;
       gsap.fromTo(
         el,
@@ -82,8 +81,6 @@ export default function CaseStudies() {
       className="relative w-full min-h-[160vh] bg-transparent text-white select-none py-24 px-6 md:px-16 lg:px-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 relative z-10">
-        
-        {/* Left Column: Sticky Title & Key Metrics (Desktop Only) */}
         <div className="w-full md:w-[40%] md:sticky md:top-28 md:h-fit flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <span className="glass-panel w-fit px-3.5 py-1.5 rounded-full text-[10px] font-mono tracking-widest text-zinc-400 uppercase">
@@ -93,17 +90,16 @@ export default function CaseStudies() {
               How Do I Solve Problems?
             </h2>
           </div>
-          
+
           <p className="text-xs lg:text-sm text-zinc-400 leading-relaxed font-light char-limit-tablet">
             An end-to-end breakdown of the AVN Holidays digital flagship. Explore how analytical performance and motion storytelling came together to produce measurable product success.
           </p>
 
-          {/* Key Metrics */}
           <div className="flex flex-col gap-4 border-t border-white/5 pt-8 mt-4">
             <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase">
               ✦ Case Metrics (AVN Holidays)
             </span>
-            
+
             <div className="grid grid-cols-2 gap-4">
               <div className="glass-panel p-4 border border-white/5 rounded-xl">
                 <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Load Speed</div>
@@ -125,7 +121,6 @@ export default function CaseStudies() {
           </div>
         </div>
 
-        {/* Right Column: Workflow Steps Stream */}
         <div className="w-full md:w-[60%] flex flex-col gap-16 md:pl-20">
           {stages.map((st, idx) => (
             <div
@@ -141,11 +136,11 @@ export default function CaseStudies() {
                   {`Step 0${idx + 1}`}
                 </span>
               </div>
-              
+
               <h3 className="font-display font-bold text-lg lg:text-xl uppercase text-white tracking-tight">
                 {st.title}
               </h3>
-              
+
               <p className="text-xs lg:text-sm text-zinc-400 leading-relaxed font-light char-limit-desktop char-limit-tablet">
                 {st.desc}
               </p>
