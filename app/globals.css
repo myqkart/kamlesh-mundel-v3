@@ -281,6 +281,65 @@ html.lenis, html.lenis body {
   100% { opacity: 0.7; }
 }
 
+.case-blueprint-bg {
+  background-image:
+    linear-gradient(rgba(0, 255, 170, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 170, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 90% 75% at 55% 50%, black 20%, transparent 80%);
+}
+
+.case-pipeline-glow {
+  background: radial-gradient(ellipse 45% 50% at 58% 48%, rgba(0, 255, 170, 0.08) 0%, transparent 72%);
+}
+
+@keyframes case-pulse-node {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 255, 170, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(0, 255, 170, 0.8); }
+}
+
+.case-active-node {
+  animation: case-pulse-node 2s ease-in-out infinite;
+}
+
+/* Case study 3D pipeline — allow extruded faces to render outside bounds */
+.case-pipeline-viewport {
+  overflow: visible;
+}
+
+.case-pipeline-stage {
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.case-pipeline-card {
+  overflow: visible;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Soft edge fade instead of hard clip on 3D corridor */
+.case-pipeline-viewport::before,
+.case-pipeline-viewport::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.case-pipeline-viewport::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+}
+
+.case-pipeline-viewport::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+}
+
 /* --- Facet Prism 3D UI --- */
 .facet-scanlines {
   opacity: 0.35;
@@ -295,7 +354,7 @@ html.lenis, html.lenis body {
 }
 
 .facet-prism-root {
-  contain: layout style;
+  overflow: visible;
 }
 
 .lab-isometric-floor {
@@ -353,7 +412,108 @@ html.lenis, html.lenis body {
   transition: all 1200ms cubic-bezier(0.16, 1, 0.3, 1); /* Hero moments (1000–1400ms) */
 }
 
+/* --- Case Study Bridge (Selected Work → Case Studies) --- */
+.bridge-section {
+  min-height: 125vh;
+}
 
+@media (max-width: 767px) {
+  .bridge-section {
+    min-height: 100vh;
+  }
+}
 
+.bridge-blueprint-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 170, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 170, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 10%, transparent 72%);
+}
+
+.bridge-vignette {
+  background: radial-gradient(ellipse 55% 50% at 50% 50%, rgba(0, 255, 170, 0.06) 0%, transparent 70%);
+}
+
+.bridge-sculpture {
+  width: 1px;
+  height: 1px;
+}
+
+.bridge-orbit-ring {
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(0, 255, 170, 0.2);
+  border-radius: 50%;
+  box-shadow:
+    0 0 40px rgba(0, 255, 170, 0.08),
+    inset 0 0 30px rgba(0, 255, 170, 0.04);
+}
+
+.bridge-core {
+  width: 96px;
+  height: 96px;
+  transform-style: preserve-3d;
+}
+
+.bridge-core-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 255, 170, 0.35);
+  background: rgba(0, 255, 170, 0.06);
+  box-shadow: 0 0 30px rgba(0, 255, 170, 0.15);
+}
+
+.bridge-core-face-a {
+  transform: rotateY(45deg) rotateX(45deg);
+}
+
+.bridge-core-face-b {
+  transform: rotateY(-45deg) rotateX(-45deg);
+  border-color: rgba(96, 165, 250, 0.35);
+  background: rgba(96, 165, 250, 0.05);
+}
+
+.bridge-shard {
+  width: 56px;
+  height: 40px;
+  transform-style: preserve-3d;
+}
+
+.bridge-shard-face {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.bridge-shard-front {
+  width: 56px;
+  height: 40px;
+  background: rgba(10, 10, 12, 0.85);
+  border: 1px solid;
+  border-radius: 4px;
+  transform: translateZ(10px);
+}
+
+.bridge-shard-top {
+  width: 56px;
+  height: 20px;
+  transform: rotateX(90deg) translateZ(0px);
+  transform-origin: top;
+  border-radius: 4px 4px 0 0;
+}
+
+.bridge-shard-side {
+  width: 20px;
+  height: 40px;
+  right: 0;
+  transform: rotateY(90deg) translateZ(46px);
+  transform-origin: right;
+  border-radius: 0 4px 4px 0;
+}
+
+.bridge-spine {
+  background: linear-gradient(to bottom, transparent, rgba(0, 255, 170, 0.5), transparent);
+  box-shadow: 0 0 12px rgba(0, 255, 170, 0.35);
+}
 
 

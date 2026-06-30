@@ -83,7 +83,7 @@ export default function FacetPrism({
   const inner = (
     <div
       className={`facet-prism-root ${className}`}
-      style={{ perspective: "1000px" }}
+      style={{ perspective: "1200px", overflow: "visible" }}
       onMouseEnter={() => setHovered(true)}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -95,9 +95,10 @@ export default function FacetPrism({
           transformStyle: "preserve-3d",
           filter: hovered && glow ? `drop-shadow(0 12px 28px ${accent}40)` : undefined,
           willChange: "transform",
+          overflow: "visible",
         }}
       >
-        <div className="relative" style={{ transformStyle: "preserve-3d" }}>
+        <div className="relative" style={{ transformStyle: "preserve-3d", overflow: "visible" }}>
           {/* Front */}
           <div
             className={`relative z-[2] ${faceClassName}`}

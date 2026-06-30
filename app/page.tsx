@@ -6,6 +6,7 @@ import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import TechUniverse from "./components/sections/TechUniverse";
 import SelectedWork from "./components/sections/SelectedWork";
+import CaseStudyBridge from "./components/sections/CaseStudyBridge";
 import CaseStudies from "./components/sections/CaseStudies";
 import Experience from "./components/sections/Experience";
 import CreativeLab from "./components/sections/CreativeLab";
@@ -49,6 +50,7 @@ export default function Home() {
       <About />
       <TechUniverse />
       <SelectedWork />
+      <CaseStudyBridge />
       <CaseStudies />
       <Experience />
       <CreativeLab />

@@ -664,7 +664,7 @@ export default function BackgroundCanvas({ isLoaded }: BackgroundCanvasProps) {
       smoothMouse.y += (mouse.y - smoothMouse.y) * 0.05;
 
       // ----------------------------------------------------
-      // SCROLL TIMING INDEX MATH FOR 15.6H TOTAL HEIGHT
+      // SCROLL TIMING INDEX MATH FOR ~16.85H TOTAL HEIGHT
       // ----------------------------------------------------
       // 1. Hero: 0 to 1.2H
       const heroFactor = Math.min(Math.max(scrollY / (1.2 * viewH), 0), 1);
@@ -691,27 +691,31 @@ export default function BackgroundCanvas({ isLoaded }: BackgroundCanvasProps) {
       const productCircleFactor = Math.min(Math.max((scrollY - 7.0 * viewH) / (0.8 * viewH), 0), 1);
       const workEndingFactor = Math.min(Math.max((scrollY - 7.2 * viewH) / (0.6 * viewH), 0), 1);
 
-      // 5. Case Studies: 7.8H to 9.4H (1.6H scroll height)
-      const caseStudiesFactor = Math.min(Math.max((scrollY - 7.8 * viewH) / (1.6 * viewH), 0), 1);
-      const activeStageIdx = Math.min(Math.max(Math.floor((scrollY - 7.8 * viewH) / (0.22 * viewH)), 0), 5);
-      const specialFoundationFactor = Math.min(Math.max((scrollY - 8.8 * viewH) / (0.3 * viewH), 0), 1);
-      const timelineTransitionFactor = Math.min(Math.max((scrollY - 9.1 * viewH) / (0.3 * viewH), 0), 1);
+      // 4b. Case Study Bridge: 7.8H to 9.05H (1.25H scroll buffer)
+      const bridgeFactor = Math.min(Math.max((scrollY - 7.8 * viewH) / (1.25 * viewH), 0), 1);
+      const bridgeG = 1.25;
 
-      // 6. Experience Timeline: 9.4H to 10.6H (1.2H scroll height)
-      const experienceFactor = Math.min(Math.max((scrollY - 9.4 * viewH) / (1.2 * viewH), 0), 1);
+      // 5. Case Studies: 9.05H to 10.65H (1.6H scroll height)
+      const caseStudiesFactor = Math.min(Math.max((scrollY - (7.8 + bridgeG) * viewH) / (1.6 * viewH), 0), 1);
+      const activeStageIdx = Math.min(Math.max(Math.floor((scrollY - (7.8 + bridgeG) * viewH) / (0.22 * viewH)), 0), 5);
+      const specialFoundationFactor = Math.min(Math.max((scrollY - (8.8 + bridgeG) * viewH) / (0.3 * viewH), 0), 1);
+      const timelineTransitionFactor = Math.min(Math.max((scrollY - (9.1 + bridgeG) * viewH) / (0.3 * viewH), 0), 1);
 
-      // Retrospective camera rotation (10.3H to 10.6H)
-      const retrospectiveFactor = Math.min(Math.max((scrollY - 10.3 * viewH) / (0.3 * viewH), 0), 1);
+      // 6. Experience Timeline: 10.65H to 11.85H (1.2H scroll height)
+      const experienceFactor = Math.min(Math.max((scrollY - (9.4 + bridgeG) * viewH) / (1.2 * viewH), 0), 1);
 
-      // 7. Creative Lab: 10.6H to 12.2H (1.6H scroll height)
-      const labFactor = Math.min(Math.max((scrollY - 10.6 * viewH) / (1.6 * viewH), 0), 1);
+      // Retrospective camera rotation (11.55H to 11.85H)
+      const retrospectiveFactor = Math.min(Math.max((scrollY - (10.3 + bridgeG) * viewH) / (0.3 * viewH), 0), 1);
 
-      // 8. Testimonials: 12.2H to 13.2H (1.0H scroll height)
-      const testimonialsFactor = Math.min(Math.max((scrollY - 12.2 * viewH) / (1.0 * viewH), 0), 1);
+      // 7. Creative Lab: 11.85H to 13.45H (1.6H scroll height)
+      const labFactor = Math.min(Math.max((scrollY - (10.6 + bridgeG) * viewH) / (1.6 * viewH), 0), 1);
 
-      // 9. Contact: 13.2H to 14.4H (1.2H scroll height)
-      const contactFactor = Math.min(Math.max((scrollY - 13.2 * viewH) / (1.2 * viewH), 0), 1);
-      const contactSunriseFactor = Math.min(Math.max((scrollY - 14.0 * viewH) / (0.4 * viewH), 0), 1);
+      // 8. Testimonials: 13.45H to 14.45H (1.0H scroll height)
+      const testimonialsFactor = Math.min(Math.max((scrollY - (12.2 + bridgeG) * viewH) / (1.0 * viewH), 0), 1);
+
+      // 9. Contact: 14.45H to 15.65H (1.2H scroll height)
+      const contactFactor = Math.min(Math.max((scrollY - (13.2 + bridgeG) * viewH) / (1.2 * viewH), 0), 1);
+      const contactSunriseFactor = Math.min(Math.max((scrollY - (14.0 + bridgeG) * viewH) / (0.4 * viewH), 0), 1);
 
       // ----------------------------------------------------
       // LIGHTING & CAMERA FLY-THROUGHS
@@ -721,8 +725,8 @@ export default function BackgroundCanvas({ isLoaded }: BackgroundCanvasProps) {
       }
       
       // Dynamic intensities
-      ambientLight.intensity = (0.15 + pulseFactor * 0.95 + productCircleFactor * 0.45 + caseStudiesFactor * 0.35 + experienceFactor * 0.4) * Math.min(1, entranceProgress);
-      mouseSpotlight.intensity = (45 + pulseFactor * 120 - workEndingFactor * 25 - specialFoundationFactor * 35) * Math.min(1, entranceProgress);
+      ambientLight.intensity = (0.15 + pulseFactor * 0.95 + productCircleFactor * 0.45 + bridgeFactor * 0.2 + caseStudiesFactor * 0.35 + experienceFactor * 0.4) * Math.min(1, entranceProgress);
+      mouseSpotlight.intensity = (45 + pulseFactor * 120 - workEndingFactor * 25 + bridgeFactor * 15 - specialFoundationFactor * 35) * Math.min(1, entranceProgress);
       flashLight.intensity = pulseFactor * 12.0 + productCircleFactor * 4.0;
 
       camera.position.x += (smoothMouse.x * 1.5 - camera.position.x) * 0.05;
@@ -735,6 +739,7 @@ export default function BackgroundCanvas({ isLoaded }: BackgroundCanvasProps) {
         - universeToWorkFactor * 3.5 
         + selectedWorkFactor * 1.5 
         - workEndingFactor * 2.5
+        + bridgeFactor * 1.2
         - caseStudiesFactor * 1.5
         + timelineTransitionFactor * 3.0
         - experienceFactor * 1.5;
@@ -759,7 +764,7 @@ export default function BackgroundCanvas({ isLoaded }: BackgroundCanvasProps) {
       bgPoints.rotation.x = Math.sin(time * 0.05) * 0.05 + smoothMouse.y * 0.02;
       
       const bgPos = bgPoints.geometry.attributes.position;
-      const scrollFactor = scrollY / (15.6 * viewH); // 0 to 1 normalized scroll
+      const scrollFactor = scrollY / (16.85 * viewH); // 0 to 1 normalized scroll
 
       for (let i = 0; i < bgParticleCount; i++) {
         const px = bgOriginalPositions[i].x;
@@ -991,7 +996,7 @@ export default function BackgroundCanvas({ isLoaded }: BackgroundCanvasProps) {
       // ----------------------------------------------------
       blueprintGrid.rotation.y = time * 0.015;
       
-      const gridTargetOpacity = Math.max(0, caseStudiesFactor - timelineTransitionFactor) * 0.18;
+      const gridTargetOpacity = Math.max(0, caseStudiesFactor - timelineTransitionFactor) * 0.18 + bridgeFactor * 0.1;
       (blueprintGrid.material as THREE.Material).opacity = THREE.MathUtils.lerp(
         (blueprintGrid.material as THREE.Material).opacity,
         gridTargetOpacity,
